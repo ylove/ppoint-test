@@ -14,7 +14,7 @@ A full-stack application for drug information lookup and management, built with 
 1. Clone the repository:
 ```bash
 git clone <repository-url>
-cd demo
+cd ppoint-test
 ```
 
 2. Build and run the application:
