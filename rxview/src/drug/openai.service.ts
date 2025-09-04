@@ -78,7 +78,7 @@ export class OpenAIService {
       return cached;
     }
 
-    const prompt = `Create a clear, informative summary for the prescription medication ${drug.drugName} (${drug.label.genericName}). Key details: - Brand Name: ${drug.drugName} - Generic Name: ${drug.label.genericName} - Manufacturer: ${drug.labeler} ${drug.label.indicationsAndUsage ? `- Primary Uses: ${this.stripHtml(drug.label.indicationsAndUsage).substring(0, 300)}...` : ''} Write 2-3 sentences that explain what this medication is, what it treats, and who makes it. Keep it professional but accessible to patients. Do not include dosage information or medical advice.`;
+    const prompt = `Create a clear, informative summary for the prescription medication ${drug.drugName} (${drug.label.genericName}). Key details: - Brand Name: ${drug.drugName} - Generic Name: ${drug.label.genericName} - Manufacturer: ${drug.labeler} ${drug.label.indicationsAndUsage ? `- Primary Uses: ${this.stripHtml(drug.label.indicationsAndUsage).substring(0, 300)}...` : ''} Write 2-3 sentences that explain what this medication is, what it treats, and who makes it. Keep it professional but accessible to patients. Do not include dosage information or medical advice. List at least two related medications a healthcare provider may be interested in prescribing for what this medication treats.`;
 
     return await this.callOpenAIWithRetry(async () => {
       const completion = await this.openai.chat.completions.create({
@@ -143,7 +143,7 @@ export class OpenAIService {
     return await this.callOpenAIWithRetry(async () => {
       const response = await this.openai.responses.create({
         model: "gpt-4o-2024-08-06",
-        temperature: 0.5,
+        temperature: 0.4,
         input: [
           { role: "system", content: systemPrompt },
           { role: "user", content: userPrompt }
@@ -157,7 +157,7 @@ export class OpenAIService {
               properties: {
                 indicationsAndUsage: {
                   type: "string",
-                  description: "Enhance the indications and usage section to be more accessible to patients. Explain what conditions this medication treats and why doctors prescribe it. Use simple language to describe the therapeutic uses while maintaining medical accuracy."
+                  description: "Enhance the indications and usage section to be more accessible to patients. Explain what conditions this medication treats and why doctors prescribe it. Use simple language to describe the condition, as well as therapeutic uses while maintaining medical accuracy."
                 },
                 dosageAndAdministration: {
                   type: "string", 

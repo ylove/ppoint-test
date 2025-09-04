@@ -121,7 +121,8 @@ export class DrugService implements OnModuleInit, OnModuleDestroy {
       filteredDrugs = filteredDrugs.filter(drug =>
         drug.drugName.toLowerCase().includes(query) ||
         drug.label.genericName.toLowerCase().includes(query) ||
-        drug.labeler.toLowerCase().includes(query)
+        drug.labeler.toLowerCase().includes(query) ||
+        drug.label.indicationsAndUsage?.toLowerCase().includes(query)
       );
     }
 
