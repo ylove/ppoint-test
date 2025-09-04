@@ -10,7 +10,7 @@ export class McpController {
 
   @Post()
   async handleMcpRequest(@Body() request: McpRequest): Promise<McpResponse> {
-    this.logger.log(`MCP Request: ${request.method}`);
+    // this.logger.log(`MCP Request: ${request.method}`);
     
     try {
       return await this.mcpService.handleRequest(request);

@@ -46,3 +46,11 @@ The application uses Docker Compose with environment files that are configured f
 ## Data Governance
 
 This application's data is hosted on European servers, in Switzerland. This may not be suitable for all US applications. This is meant as a demonstration.
+
+## API Documentation
+
+API documentation is available from the backend server at http://localhost:3001/api/docs . 
+
+## MCP Server
+
+The MCP server is available on the backend server at http://localhost:3001/mcp . Information on functions and parameters are available at the backend README.
