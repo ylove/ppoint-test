@@ -1,0 +1,1659 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  
+  /* Color palette */
+  --blue-50: #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  
+  --green-50: #f0fdf4;
+  --green-100: #dcfce7;
+  --green-500: #22c55e;
+  --green-600: #16a34a;
+  
+  --red-50: #fef2f2;
+  --red-100: #fee2e2;
+  --red-500: #ef4444;
+  --red-600: #dc2626;
+  
+  --yellow-50: #fefce8;
+  --yellow-100: #fef3c7;
+  --yellow-500: #eab308;
+  --yellow-600: #ca8a04;
+  
+  --purple-50: #faf5ff;
+  --purple-100: #f3e8ff;
+  --purple-500: #a855f7;
+  --purple-600: #9333ea;
+  
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  font-feature-settings: 'rlig' 1, 'calt' 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ====== LAYOUT COMPONENTS ====== */
+
+/* Header Styles */
+.header {
+  @apply bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50;
+}
+
+.header-nav {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.header-container {
+  @apply flex justify-between items-center h-16;
+}
+
+.header-logo {
+  @apply flex items-center space-x-2 font-bold text-xl text-gray-900 hover:text-blue-600 transition-colors;
+}
+
+.header-logo-icon {
+  @apply h-8 w-8 text-blue-600;
+}
+
+.header-logo-text {
+  @apply text-gray-900;
+}
+
+.header-nav-desktop {
+  @apply hidden md:flex items-center space-x-8;
+}
+
+.header-nav-link {
+  @apply px-3 py-2 rounded-md text-sm font-medium transition-colors text-gray-700 hover:text-blue-600 hover:bg-gray-50;
+}
+
+.header-nav-link-active {
+  @apply text-blue-600 bg-blue-50;
+}
+
+.header-mobile-button-container {
+  @apply md:hidden;
+}
+
+.header-mobile-button {
+  @apply text-gray-400 hover:text-gray-500 focus:outline-none focus:text-gray-500 p-2 rounded-md transition-colors;
+}
+
+.header-mobile-icon {
+  @apply h-6 w-6;
+}
+
+.header-mobile-menu {
+  @apply md:hidden py-3 border-t border-gray-200 bg-white;
+}
+
+.header-mobile-nav {
+  @apply space-y-1;
+}
+
+.header-mobile-nav-link {
+  @apply block px-3 py-2 rounded-md text-base font-medium transition-colors text-gray-700 hover:text-blue-600 hover:bg-gray-50;
+}
+
+.header-mobile-nav-link-active {
+  @apply text-blue-600 bg-blue-50;
+}
+
+/* Footer Styles */
+.footer {
+  @apply bg-gray-50 border-t border-gray-200 mt-auto;
+}
+
+.footer-container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12;
+}
+
+.footer-main {
+  @apply grid grid-cols-1 md:grid-cols-4 gap-8 mb-8;
+}
+
+.footer-company {
+  @apply md:col-span-1;
+}
+
+.footer-logo {
+  @apply flex items-center space-x-2 mb-4;
+}
+
+.footer-logo-icon {
+  @apply h-6 w-6 text-blue-600;
+}
+
+.footer-logo-text {
+  @apply font-bold text-gray-900;
+}
+
+.footer-company-description {
+  @apply text-sm text-gray-600 mb-4 leading-relaxed;
+}
+
+.footer-contact {
+  @apply space-y-2;
+}
+
+.footer-contact-link {
+  @apply flex items-center text-sm text-gray-600 hover:text-blue-600 transition-colors;
+}
+
+.footer-contact-icon {
+  @apply h-4 w-4 mr-2;
+}
+
+.footer-links-grid {
+  @apply md:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-8;
+}
+
+.footer-links-section {
+  @apply space-y-3;
+}
+
+.footer-links-title {
+  @apply text-sm font-semibold text-gray-900 uppercase tracking-wide;
+}
+
+.footer-links-list {
+  @apply space-y-2;
+}
+
+.footer-link {
+  @apply text-sm text-gray-600 hover:text-blue-600 transition-colors flex items-center;
+}
+
+.footer-link-external {
+  @apply inline-flex items-center;
+}
+
+.footer-external-icon {
+  @apply h-3 w-3 ml-1;
+}
+
+.footer-legal-icon {
+  @apply mr-2;
+}
+
+.footer-icon-small {
+  @apply h-3 w-3;
+}
+
+.footer-bottom {
+  @apply pt-8 border-t border-gray-200;
+}
+
+.footer-bottom-content {
+  @apply flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0;
+}
+
+.footer-copyright {
+  @apply text-sm text-gray-500;
+}
+
+.footer-bottom-links {
+  @apply flex space-x-6;
+}
+
+.footer-bottom-link {
+  @apply text-sm text-gray-500 hover:text-blue-600 transition-colors;
+}
+
+.footer-disclaimer {
+  @apply mt-8 pt-6 border-t border-gray-200;
+}
+
+.footer-disclaimer-content {
+  @apply flex items-start space-x-3 bg-yellow-50 p-4 rounded-lg border border-yellow-200;
+}
+
+.footer-disclaimer-icon {
+  @apply h-5 w-5 text-yellow-600 flex-shrink-0 mt-0.5;
+}
+
+.footer-disclaimer-text {
+  @apply flex-1;
+}
+
+.footer-disclaimer-title {
+  @apply text-sm font-semibold text-yellow-900 mb-1;
+}
+
+.footer-disclaimer-description {
+  @apply text-xs text-yellow-700 leading-relaxed;
+}
+
+/* ====== HOME PAGE STYLES ====== */
+
+/* Hero Section */
+.hero-section {
+  @apply bg-gradient-to-br from-blue-50 via-white to-green-50 py-20;
+}
+
+.hero-icon-wrapper {
+  @apply flex justify-center mb-6;
+}
+
+.hero-icon-container {
+  @apply bg-blue-100 p-4 rounded-full;
+}
+
+.hero-icon {
+  @apply h-12 w-12 text-blue-600;
+}
+
+.hero-title {
+  @apply text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight text-center;
+}
+
+.hero-title-gradient {
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-600;
+}
+
+.hero-description {
+  @apply text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed text-center;
+}
+
+.hero-buttons {
+  @apply flex flex-col sm:flex-row gap-4 justify-center items-center mb-12;
+}
+
+.btn-primary {
+  @apply bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center;
+}
+
+.btn-secondary {
+  @apply text-gray-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors;
+}
+
+.btn-icon {
+  @apply ml-2 h-5 w-5 transition-transform;
+}
+
+.btn-primary:hover .btn-icon {
+  @apply translate-x-1;
+}
+
+.quick-search-container {
+  @apply max-w-2xl mx-auto;
+}
+
+.quick-search-card {
+  @apply bg-white rounded-xl shadow-lg p-6 border border-gray-200;
+}
+
+.quick-search-title {
+  @apply text-lg font-semibold text-gray-900 mb-4 text-center;
+}
+
+.quick-search-form {
+  @apply space-y-4;
+}
+
+.search-input-container {
+  @apply relative;
+}
+
+.search-input {
+  @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-lg;
+}
+
+.search-button {
+  @apply w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors;
+}
+
+/* Features Section */
+.features-section {
+  @apply py-20 bg-white;
+}
+
+.features-header {
+  @apply text-center mb-16;
+}
+
+.features-title {
+  @apply text-3xl md:text-4xl font-bold text-gray-900 mb-4;
+}
+
+.features-description {
+  @apply text-xl text-gray-600 max-w-3xl mx-auto;
+}
+
+.features-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8;
+}
+
+.feature-card {
+  @apply text-center p-6 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors;
+}
+
+.feature-icon-wrapper {
+  @apply text-blue-600 mb-4 flex justify-center;
+}
+
+.feature-icon {
+  @apply h-8 w-8;
+}
+
+.feature-card-title {
+  @apply text-xl font-semibold text-gray-900 mb-3;
+}
+
+.feature-card-description {
+  @apply text-gray-600 leading-relaxed;
+}
+
+/* Stats Section */
+.stats-section {
+  @apply py-16 bg-gray-50;
+}
+
+.stats-grid {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-8 text-center;
+}
+
+.stat-item {
+  @apply space-y-2;
+}
+
+.stat-number {
+  @apply text-4xl font-bold mb-2;
+}
+
+.stat-blue {
+  @apply text-blue-600;
+}
+
+.stat-green {
+  @apply text-green-600;
+}
+
+.stat-purple {
+  @apply text-purple-600;
+}
+
+.stat-label {
+  @apply text-gray-600;
+}
+
+/* CTA Section */
+.cta-section {
+  @apply py-20 bg-gradient-to-r from-blue-600 to-green-600;
+}
+
+.cta-title {
+  @apply text-3xl md:text-4xl font-bold text-white mb-4;
+}
+
+.cta-description {
+  @apply text-xl text-blue-100 mb-8 max-w-2xl mx-auto;
+}
+
+.cta-button {
+  @apply bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors inline-flex items-center;
+}
+
+/* ====== DRUG SEARCH PAGE ====== */
+
+.drugs-page {
+  @apply min-h-screen bg-gray-50;
+}
+
+.drugs-container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8;
+}
+
+.drugs-header {
+  @apply mb-8;
+}
+
+.drugs-title {
+  @apply text-3xl font-bold text-gray-900 mb-4;
+}
+
+.drugs-description {
+  @apply text-gray-600 max-w-2xl;
+}
+
+.drugs-search-section {
+  @apply mb-8;
+}
+
+.drugs-search-card {
+  @apply bg-white rounded-lg shadow-sm border border-gray-200 p-6;
+}
+
+.drugs-search-controls {
+  @apply flex items-center justify-between mt-4;
+}
+
+.drugs-filter-toggle {
+  @apply flex items-center text-sm text-gray-600 hover:text-gray-900 transition-colors;
+}
+
+.drugs-filter-icon {
+  @apply h-4 w-4 mr-2;
+}
+
+.drugs-clear-filters {
+  @apply flex items-center text-sm text-red-600 hover:text-red-700 transition-colors;
+}
+
+.drugs-clear-icon {
+  @apply h-4 w-4 mr-1;
+}
+
+.drugs-filters {
+  @apply pt-4 border-t border-gray-200 mt-4;
+}
+
+.drugs-filters-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-4;
+}
+
+.drugs-filter-group {
+  @apply space-y-2;
+}
+
+.drugs-filter-label {
+  @apply block text-sm font-medium text-gray-700;
+}
+
+.drugs-filter-input {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none;
+}
+
+.drugs-filter-actions {
+  @apply mt-4;
+}
+
+.drugs-apply-filters {
+  @apply bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors;
+}
+
+.drugs-results {
+  @apply space-y-6;
+}
+
+.drugs-results-header {
+  @apply flex items-center justify-between;
+}
+
+.drugs-results-count {
+  @apply text-sm text-gray-600;
+}
+
+.drugs-results-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+.drugs-no-results {
+  @apply text-center py-12 bg-white rounded-lg border border-gray-200;
+}
+
+.drugs-no-results-icon {
+  @apply text-gray-400 mb-4;
+}
+
+.drugs-empty-icon {
+  @apply h-12 w-12 mx-auto;
+}
+
+.drugs-no-results-title {
+  @apply text-lg font-medium text-gray-900 mb-2;
+}
+
+.drugs-no-results-description {
+  @apply text-gray-600 mb-4;
+}
+
+.drugs-no-results-button {
+  @apply text-blue-600 hover:text-blue-700 font-medium;
+}
+
+.drugs-empty-state {
+  @apply text-center py-12 bg-white rounded-lg border border-gray-200;
+}
+
+.drugs-empty-icon {
+  @apply text-gray-400 mb-4;
+}
+
+.drugs-empty-icon-svg {
+  @apply h-12 w-12 mx-auto;
+}
+
+.drugs-empty-title {
+  @apply text-lg font-medium text-gray-900 mb-2;
+}
+
+.drugs-empty-description {
+  @apply text-gray-600;
+}
+
+.drugs-pagination {
+  @apply mt-8;
+}
+
+/* ====== SEARCH INPUT COMPONENT ====== */
+
+.search-input-wrapper {
+  @apply relative;
+}
+
+.search-input-icon-left {
+  @apply absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400;
+}
+
+.search-input-spinner {
+  @apply h-5 w-5 animate-spin;
+}
+
+.search-input-search-icon {
+  @apply h-5 w-5;
+}
+
+.search-input-field {
+  @apply w-full pl-10 pr-20 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200;
+}
+
+.search-input-field-focused {
+  @apply ring-2 ring-blue-500 border-transparent;
+}
+
+.search-input-field-disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+.search-input-clear-button {
+  @apply absolute right-12 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors p-1 rounded;
+}
+
+.search-input-clear-icon {
+  @apply h-4 w-4;
+}
+
+.search-input-search-button {
+  @apply absolute right-2 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors;
+}
+
+.search-input-button-spinner {
+  @apply h-4 w-4 animate-spin;
+}
+
+.search-input-button-icon {
+  @apply h-4 w-4;
+}
+
+/* Search Suggestions */
+.search-suggestions-dropdown {
+  @apply absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-64 overflow-y-auto;
+}
+
+.search-suggestions-list {
+  @apply py-2;
+}
+
+.search-suggestion-item {
+  @apply w-full px-4 py-3 text-left hover:bg-gray-50 transition-colors border-none bg-transparent;
+}
+
+.search-suggestion-item-selected {
+  @apply bg-blue-50 text-blue-900;
+}
+
+.search-suggestion-content {
+  @apply space-y-1;
+}
+
+.search-suggestion-main {
+  @apply flex items-center space-x-2;
+}
+
+.search-suggestion-drug-name {
+  @apply font-medium text-gray-900;
+}
+
+.search-suggestion-generic {
+  @apply text-gray-600 text-sm;
+}
+
+.search-suggestion-meta {
+  @apply flex items-center justify-between;
+}
+
+.search-suggestion-labeler {
+  @apply text-xs text-gray-500;
+}
+
+.search-suggestion-type {
+  @apply text-xs px-2 py-1 rounded-full;
+}
+
+.search-suggestion-type-brand {
+  @apply bg-blue-100 text-blue-700;
+}
+
+.search-suggestion-type-generic {
+  @apply bg-green-100 text-green-700;
+}
+
+.search-suggestion-type-labeler {
+  @apply bg-purple-100 text-purple-700;
+}
+
+/* ====== LOADING COMPONENTS ====== */
+
+.loading-spinner-container {
+  @apply flex items-center justify-center;
+}
+
+.loading-spinner {
+  @apply animate-spin rounded-full border-2 border-gray-300;
+}
+
+.loading-spinner-sm {
+  @apply h-4 w-4 border-t-blue-600;
+}
+
+.loading-spinner-default {
+  @apply h-8 w-8 border-t-blue-600;
+}
+
+.loading-spinner-lg {
+  @apply h-12 w-12 border-t-blue-600;
+}
+
+.loading-spinner-xl {
+  @apply h-16 w-16 border-t-blue-600;
+}
+
+.loading-spinner-primary {
+  @apply border-t-blue-600;
+}
+
+.loading-spinner-secondary {
+  @apply border-t-gray-600;
+}
+
+.loading-spinner-muted {
+  @apply border-t-gray-400;
+}
+
+/* Loading Dots */
+.loading-dots-container {
+  @apply flex space-x-1;
+}
+
+.loading-dots-sm {
+  @apply space-x-1;
+}
+
+.loading-dots-default {
+  @apply space-x-2;
+}
+
+.loading-dots-lg {
+  @apply space-x-3;
+}
+
+.loading-dot {
+  @apply bg-blue-600 rounded-full animate-pulse;
+}
+
+.loading-dots-sm .loading-dot {
+  @apply w-2 h-2;
+}
+
+.loading-dots-default .loading-dot {
+  @apply w-3 h-3;
+}
+
+.loading-dots-lg .loading-dot {
+  @apply w-4 h-4;
+}
+
+.loading-dot-1 {
+  animation-delay: 0ms;
+}
+
+.loading-dot-2 {
+  animation-delay: 150ms;
+}
+
+.loading-dot-3 {
+  animation-delay: 300ms;
+}
+
+/* Loading Skeletons */
+.loading-skeleton {
+  @apply animate-pulse bg-gray-200 rounded;
+}
+
+.loading-skeleton-text {
+  @apply h-4 bg-gray-200 rounded;
+}
+
+.loading-skeleton-card {
+  @apply h-32 bg-gray-200 rounded-lg;
+}
+
+.loading-skeleton-avatar {
+  @apply h-12 w-12 bg-gray-200 rounded-full;
+}
+
+.loading-skeleton-button {
+  @apply h-10 w-24 bg-gray-200 rounded-md;
+}
+
+.loading-skeleton-text-block {
+  @apply space-y-3;
+}
+
+.loading-skeleton-line {
+  @apply h-4 bg-gray-200 rounded;
+}
+
+.loading-skeleton-line-short {
+  @apply w-3/4;
+}
+
+.loading-skeleton-line-medium {
+  @apply w-5/6;
+}
+
+/* Drug Card Skeleton */
+.loading-skeleton-drug-card {
+  @apply animate-pulse p-6 bg-white rounded-lg border border-gray-200 space-y-4;
+}
+
+.loading-skeleton-drug-card-header {
+  @apply space-y-2;
+}
+
+.loading-skeleton-drug-title {
+  @apply h-6 bg-gray-200 rounded w-3/4;
+}
+
+.loading-skeleton-drug-generic {
+  @apply h-4 bg-gray-200 rounded w-1/2;
+}
+
+.loading-skeleton-drug-card-content {
+  @apply space-y-2;
+}
+
+.loading-skeleton-drug-card-footer {
+  @apply flex items-center justify-between;
+}
+
+.loading-skeleton-badge {
+  @apply h-6 w-16 bg-gray-200 rounded-full;
+}
+
+.loading-skeleton-arrow {
+  @apply h-4 w-4 bg-gray-200 rounded;
+}
+
+/* Drug Section Skeleton */
+.loading-skeleton-drug-section {
+  @apply animate-pulse p-4 bg-white rounded-lg border border-gray-200;
+}
+
+.loading-skeleton-section-header {
+  @apply flex items-center justify-between;
+}
+
+.loading-skeleton-section-icon {
+  @apply h-5 w-5 bg-gray-200 rounded;
+}
+
+.loading-skeleton-section-title {
+  @apply h-5 bg-gray-200 rounded flex-1 mx-3;
+}
+
+.loading-skeleton-section-chevron {
+  @apply h-5 w-5 bg-gray-200 rounded;
+}
+
+/* Loading Overlay */
+.loading-overlay-container {
+  @apply relative;
+}
+
+.loading-overlay {
+  @apply absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center z-50;
+}
+
+.loading-overlay-content {
+  @apply text-center;
+}
+
+.loading-overlay-message {
+  @apply mt-4 text-sm text-gray-600;
+}
+
+/* Loading Page */
+.loading-page {
+  @apply min-h-screen bg-gray-50 flex items-center justify-center;
+}
+
+.loading-page-content {
+  @apply text-center;
+}
+
+.loading-page-message {
+  @apply mt-6 text-2xl font-semibold text-gray-900;
+}
+
+.loading-page-description {
+  @apply mt-2 text-gray-600;
+}
+
+/* ====== DRUG CARD COMPONENT ====== */
+
+.drug-card {
+  @apply block bg-white rounded-lg border border-gray-200 hover:shadow-md transition-all duration-200 hover:border-blue-300 overflow-hidden;
+}
+
+/* Default Drug Card */
+.drug-card-default {
+  @apply p-6;
+}
+
+.drug-card-ai-enhanced {
+  @apply ring-1 ring-blue-200;
+}
+
+.drug-card-important {
+  @apply ring-1 ring-red-200;
+}
+
+.drug-card-header {
+  @apply flex justify-end mb-2 -mt-2 -mr-2;
+}
+
+.drug-card-badges {
+  @apply flex space-x-2;
+}
+
+.drug-card-ai-badge {
+  @apply flex items-center space-x-1 bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs;
+}
+
+.drug-card-important-badge {
+  @apply flex items-center space-x-1 bg-red-100 text-red-700 px-2 py-1 rounded-full text-xs;
+}
+
+.drug-card-ai-icon {
+  @apply h-3 w-3;
+}
+
+.drug-card-important-icon {
+  @apply h-3 w-3;
+}
+
+.drug-card-badge-text {
+  @apply font-medium;
+}
+
+.drug-card-content {
+  @apply space-y-4;
+}
+
+.drug-card-main {
+  @apply space-y-2;
+}
+
+.drug-card-title {
+  @apply text-lg font-semibold text-gray-900;
+}
+
+.drug-card-generic {
+  @apply text-sm text-gray-600;
+}
+
+.drug-card-summary {
+  @apply text-sm text-gray-700 leading-relaxed;
+}
+
+.drug-card-meta {
+  @apply space-y-2;
+}
+
+.drug-card-labeler {
+  @apply flex items-center text-xs text-gray-500;
+}
+
+.drug-card-updated {
+  @apply flex items-center text-xs text-gray-500;
+}
+
+.drug-card-meta-icon {
+  @apply h-3 w-3 mr-2 flex-shrink-0;
+}
+
+.drug-card-meta-text {
+  @apply truncate;
+}
+
+.drug-card-footer {
+  @apply pt-4 border-t border-gray-100;
+}
+
+.drug-card-cta {
+  @apply flex items-center justify-between text-blue-600 font-medium hover:text-blue-700 transition-colors;
+}
+
+.drug-card-cta-text {
+  @apply text-sm;
+}
+
+.drug-card-cta-arrow {
+  @apply h-4 w-4 transition-transform;
+}
+
+.drug-card:hover .drug-card-cta-arrow {
+  @apply translate-x-1;
+}
+
+/* Compact Drug Card */
+.drug-card-compact {
+  @apply p-4 hover:bg-gray-50;
+}
+
+.drug-card-compact-content {
+  @apply flex items-center justify-between;
+}
+
+.drug-card-compact-main {
+  @apply flex-1;
+}
+
+.drug-card-compact-title {
+  @apply font-semibold text-gray-900 mb-1;
+}
+
+.drug-card-compact-generic {
+  @apply text-sm text-gray-600;
+}
+
+.drug-card-compact-arrow {
+  @apply h-5 w-5 text-gray-400 transition-transform;
+}
+
+.drug-card:hover .drug-card-compact-arrow {
+  @apply translate-x-1;
+}
+
+/* Featured Drug Card */
+.drug-card-featured {
+  @apply p-6 bg-gradient-to-br from-blue-50 to-white;
+}
+
+.drug-card-featured-header {
+  @apply flex justify-end space-x-2 mb-4;
+}
+
+.drug-card-featured-ai-badge {
+  @apply flex items-center space-x-1 bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-medium;
+}
+
+.drug-card-featured-important-badge {
+  @apply flex items-center space-x-1 bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-medium;
+}
+
+.drug-card-featured-content {
+  @apply space-y-4;
+}
+
+.drug-card-featured-title {
+  @apply text-xl font-bold text-gray-900;
+}
+
+.drug-card-featured-generic {
+  @apply text-gray-600;
+}
+
+.drug-card-featured-summary {
+  @apply text-sm text-gray-700 leading-relaxed;
+}
+
+.drug-card-featured-meta {
+  @apply flex items-center justify-between text-xs text-gray-500;
+}
+
+.drug-card-featured-labeler {
+  @apply flex items-center;
+}
+
+.drug-card-featured-updated {
+  @apply flex items-center;
+}
+
+.drug-card-featured-footer {
+  @apply pt-4 border-t border-gray-200;
+}
+
+.drug-card-featured-cta {
+  @apply flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors;
+}
+
+
+.drug-section {
+  @apply bg-white rounded-lg border border-gray-200 overflow-hidden mb-4;
+}
+
+.drug-section-category-usage {
+  @apply border-l-4 border-l-green-500;
+}
+
+.drug-section-category-safety {
+  @apply border-l-4 border-l-red-500;
+}
+
+.drug-section-category-clinical {
+  @apply border-l-4 border-l-blue-500;
+}
+
+.drug-section-category-administration {
+  @apply border-l-4 border-l-purple-500;
+}
+
+.drug-section-category-warnings {
+  @apply border-l-4 border-l-orange-500;
+}
+
+.drug-section-category-interactions {
+  @apply border-l-4 border-l-yellow-500;
+}
+
+.drug-section-category-other {
+  @apply border-l-4 border-l-gray-500;
+}
+
+.drug-section-important {
+  @apply ring-2 ring-red-200 bg-red-50;
+}
+
+.drug-section-ai-enhanced {
+  @apply ring-1 ring-blue-200;
+}
+
+.drug-section-expanded {
+  @apply shadow-md;
+}
+
+.drug-section-header {
+  @apply w-full px-6 py-4 text-left hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-inset border-none bg-transparent;
+}
+
+.drug-section-header-main {
+  @apply flex items-center justify-between;
+}
+
+.drug-section-header-left {
+  @apply flex items-center space-x-3;
+}
+
+.drug-section-category-icon {
+  @apply h-5 w-5;
+}
+
+.drug-section-icon-warning {
+  @apply text-red-600;
+}
+
+.drug-section-icon-ai {
+  @apply text-blue-600;
+}
+
+.drug-section-icon-info {
+  @apply text-gray-600;
+}
+
+.drug-section-title {
+  @apply text-lg font-semibold text-gray-900;
+}
+
+.drug-section-header-right {
+  @apply flex items-center space-x-2;
+}
+
+.drug-section-ai-badge {
+  @apply flex items-center text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded-md;
+}
+
+.drug-section-ai-badge-icon {
+  @apply h-3 w-3 mr-1;
+}
+
+.drug-section-ai-badge-text {
+  @apply font-medium;
+}
+
+.drug-section-important-badge {
+  @apply flex items-center text-xs text-red-600 bg-red-50 px-2 py-1 rounded-md;
+}
+
+.drug-section-important-badge-icon {
+  @apply h-3 w-3 mr-1;
+}
+
+.drug-section-important-badge-text {
+  @apply font-medium;
+}
+
+.drug-section-toggle-icon {
+  @apply text-gray-400;
+}
+
+.drug-section-chevron {
+  @apply h-5 w-5;
+}
+
+.drug-section-excerpt {
+  @apply mt-3 pt-3 border-t border-gray-100;
+}
+
+.drug-section-excerpt-text {
+  @apply text-sm text-gray-600 leading-relaxed;
+}
+
+.drug-section-content {
+  @apply px-6 pb-6;
+}
+
+.drug-section-original {
+  @apply space-y-4;
+}
+
+.drug-section-html-content {
+  @apply max-w-none text-gray-700;
+}
+
+/* Prose styles for drug content */
+.drug-section-html-content h4 {
+  @apply text-xl font-bold text-gray-900 mb-6 mt-8 first:mt-0 pb-2 border-b border-gray-200;
+}
+
+.drug-section-html-content h2 {
+  @apply text-lg font-semibold text-gray-800 mb-4 mt-6;
+}
+
+.drug-section-html-content h3 {
+  @apply text-base font-medium text-gray-700 mb-3 mt-4;
+}
+
+.drug-section-html-content p {
+  @apply mb-4 leading-relaxed text-gray-700;
+}
+
+.drug-section-html-content p.First {
+  @apply mt-0 font-medium;
+}
+
+.drug-section-html-content ul, 
+.drug-section-html-content ol {
+  @apply mb-6 pl-0;
+}
+
+.drug-section-html-content ul.Disc {
+  @apply list-none space-y-2;
+}
+
+.drug-section-html-content ul.Disc li {
+  @apply pl-6 relative mb-2 leading-relaxed;
+}
+
+.drug-section-html-content ul.Disc li::before {
+  @apply absolute left-0 top-2 w-2 h-2 bg-blue-600 rounded-full;
+  content: '';
+}
+
+.drug-section-html-content ol {
+  @apply list-decimal list-inside;
+}
+
+.drug-section-html-content li {
+  @apply mb-2 leading-relaxed text-gray-700;
+}
+
+.drug-section-html-content table {
+  @apply w-full border-collapse border border-gray-300 mb-6 rounded-lg overflow-hidden shadow-sm;
+}
+
+.drug-section-html-content th,
+.drug-section-html-content td {
+  @apply border border-gray-200 px-4 py-3 text-left;
+}
+
+.drug-section-html-content th {
+  @apply bg-gray-50 font-semibold text-gray-900;
+}
+
+.drug-section-html-content td {
+  @apply text-gray-700;
+}
+
+.drug-section-html-content section {
+  @apply mb-8;
+}
+
+.drug-section-html-content section.Section {
+  @apply border-l-4 border-blue-200 pl-4 bg-gray-50 py-4 rounded-r-lg;
+}
+
+.drug-section-ai-content {
+  @apply mt-6 pt-4 border-t border-gray-100;
+}
+
+.drug-section-ai-toggle {
+  @apply flex items-center text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors border-none bg-transparent p-0;
+}
+
+.drug-section-ai-toggle-icon {
+  @apply h-4 w-4 mr-2;
+}
+
+.drug-section-ai-toggle-text {
+  @apply flex-1;
+}
+
+.drug-section-ai-toggle-chevron {
+  @apply ml-2;
+}
+
+.drug-section-chevron-small {
+  @apply h-4 w-4;
+}
+
+.drug-section-enhanced-content {
+  @apply mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200;
+}
+
+.drug-section-enhanced-header {
+  @apply flex items-center mb-3;
+}
+
+.drug-section-enhanced-icon {
+  @apply h-4 w-4 text-blue-600 mr-2;
+}
+
+.drug-section-enhanced-title {
+  @apply text-sm font-semibold text-blue-900;
+}
+
+.drug-section-enhanced-text {
+  @apply text-sm text-blue-900 leading-relaxed;
+}
+
+.drug-section-footer {
+  @apply mt-6 pt-4 border-t border-gray-100;
+}
+
+.drug-section-meta {
+  @apply flex items-center justify-between text-xs text-gray-500;
+}
+
+.drug-section-category-label {
+  @apply bg-gray-100 px-2 py-1 rounded-full;
+}
+
+.drug-section-ai-label {
+  @apply bg-blue-100 text-blue-700 px-2 py-1 rounded-full;
+}
+
+/* ====== DRUG DETAIL PAGE ====== */
+
+.drug-detail-page {
+  @apply min-h-screen bg-gray-50;
+}
+
+.drug-breadcrumb-section {
+  @apply bg-white border-b border-gray-200;
+}
+
+.drug-breadcrumb-container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4;
+}
+
+.drug-breadcrumb {
+  @apply flex items-center space-x-2 text-sm text-gray-600;
+}
+
+.drug-breadcrumb-link {
+  @apply hover:text-blue-600 transition-colors;
+}
+
+.drug-breadcrumb-separator {
+  @apply text-gray-400;
+}
+
+.drug-breadcrumb-current {
+  @apply text-gray-900 font-medium;
+}
+
+.drug-detail-container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8;
+}
+
+.drug-header-card {
+  @apply bg-gradient-to-br from-blue-50 via-white to-green-50 rounded-2xl p-8 mb-8 relative overflow-hidden;
+}
+
+.drug-header-decoration-1 {
+  @apply absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-blue-100 to-transparent rounded-full opacity-30 transform translate-x-32 -translate-y-32;
+}
+
+.drug-header-decoration-2 {
+  @apply absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-green-100 to-transparent rounded-full opacity-30 transform -translate-x-24 translate-y-24;
+}
+
+.drug-header-content {
+  @apply relative z-10;
+}
+
+.drug-header-main {
+  @apply flex flex-col lg:flex-row lg:items-start lg:justify-between;
+}
+
+.drug-header-info {
+  @apply flex-1 lg:pr-8;
+}
+
+.drug-name-title {
+  @apply text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight;
+}
+
+.drug-header-details {
+  @apply space-y-3 mb-6;
+}
+
+.drug-generic-name {
+  @apply flex items-center text-lg text-gray-600;
+}
+
+.drug-detail-label {
+  @apply font-medium;
+}
+
+.drug-detail-value {
+  @apply ml-2 text-gray-900;
+}
+
+.drug-last-updated {
+  @apply flex items-center text-sm text-gray-500;
+}
+
+.drug-calendar-icon {
+  @apply h-4 w-4 mr-2;
+}
+
+.drug-summary-card {
+  @apply bg-white rounded-xl p-6 border border-gray-200 shadow-sm;
+}
+
+.drug-summary-header {
+  @apply flex items-center mb-3;
+}
+
+.drug-summary-icon {
+  @apply h-5 w-5 text-blue-600 mr-2;
+}
+
+.drug-summary-title {
+  @apply font-semibold text-gray-900;
+}
+
+.drug-summary-text {
+  @apply text-gray-700 leading-relaxed;
+}
+
+.drug-sidebar {
+  @apply lg:w-80 mt-8 lg:mt-0;
+}
+
+.drug-quick-facts-card {
+  @apply bg-white rounded-xl p-6 border border-gray-200 shadow-sm mb-6;
+}
+
+.drug-quick-facts-title {
+  @apply font-semibold text-gray-900 mb-4;
+}
+
+.drug-quick-facts-list {
+  @apply space-y-4;
+}
+
+.drug-quick-fact {
+  @apply flex items-center justify-between p-3 rounded-lg;
+}
+
+.drug-quick-fact-blue {
+  @apply bg-blue-50;
+}
+
+.drug-quick-fact-green {
+  @apply bg-green-50;
+}
+
+.drug-quick-fact-purple {
+  @apply bg-purple-50;
+}
+
+.drug-quick-fact-yellow {
+  @apply bg-yellow-50;
+}
+
+.drug-quick-fact-label {
+  @apply text-sm font-medium;
+}
+
+.drug-quick-fact-blue .drug-quick-fact-label {
+  @apply text-blue-900;
+}
+
+.drug-quick-fact-green .drug-quick-fact-label {
+  @apply text-green-900;
+}
+
+.drug-quick-fact-purple .drug-quick-fact-label {
+  @apply text-purple-900;
+}
+
+.drug-quick-fact-yellow .drug-quick-fact-label {
+  @apply text-yellow-900;
+}
+
+.drug-quick-fact-value {
+  @apply text-sm font-semibold;
+}
+
+.drug-quick-fact-blue .drug-quick-fact-value {
+  @apply text-blue-700;
+}
+
+.drug-quick-fact-green .drug-quick-fact-value {
+  @apply text-green-700;
+}
+
+.drug-quick-fact-purple .drug-quick-fact-value {
+  @apply text-purple-700;
+}
+
+.drug-quick-fact-yellow .drug-quick-fact-value {
+  @apply text-yellow-700;
+}
+
+.drug-warning-card {
+  @apply bg-red-50 rounded-xl p-4 border border-red-200;
+}
+
+.drug-warning-header {
+  @apply flex items-center mb-2;
+}
+
+.drug-warning-icon {
+  @apply h-5 w-5 text-red-600 mr-2;
+}
+
+.drug-warning-title {
+  @apply font-semibold text-red-900;
+}
+
+.drug-warning-text {
+  @apply text-sm text-red-700;
+}
+
+.drug-tabs-container {
+  @apply bg-white rounded-lg border border-gray-200 mb-6;
+}
+
+.drug-tabs-header {
+  @apply border-b border-gray-200 px-6;
+}
+
+.drug-tabs-nav {
+  @apply flex space-x-8 overflow-x-auto;
+}
+
+.drug-tab {
+  @apply py-4 px-2 border-b-2 font-medium text-sm whitespace-nowrap transition-colors border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300;
+}
+
+.drug-tab-active {
+  @apply border-blue-500 text-blue-600;
+}
+
+.drug-tab-count {
+  @apply ml-2 px-2 py-1 text-xs rounded-full bg-gray-100 text-gray-600;
+}
+
+.drug-tab-count-active {
+  @apply bg-blue-100 text-blue-600;
+}
+
+.drug-content-sections {
+  @apply space-y-6;
+}
+
+.drug-tab-content {
+  @apply space-y-6;
+}
+
+.drug-section-title {
+  @apply text-2xl font-bold text-gray-900 mb-6;
+}
+
+.drug-safety-header {
+  @apply flex items-center mb-6;
+}
+
+.drug-safety-icon {
+  @apply h-6 w-6 text-red-600 mr-3;
+}
+
+.drug-sections-list {
+  @apply space-y-4;
+}
+
+.drug-no-content {
+  @apply bg-white rounded-lg p-8 text-center border border-gray-200;
+}
+
+.drug-no-content-text {
+  @apply text-gray-500;
+}
+
+.drug-bottom-cta {
+  @apply mt-12 bg-gradient-to-r from-blue-600 to-green-600 rounded-xl p-8 text-center text-white;
+}
+
+/* ====== DRUG NOT FOUND PAGE ====== */
+
+.drug-not-found-page {
+  @apply min-h-screen bg-gray-50 flex items-center justify-center;
+}
+
+.drug-not-found-container {
+  @apply max-w-md mx-auto px-4 text-center;
+}
+
+.drug-not-found-content {
+  @apply mb-8;
+}
+
+.drug-not-found-icon {
+  @apply text-red-500 mb-6 flex justify-center;
+}
+
+.drug-not-found-icon-svg {
+  @apply h-16 w-16;
+}
+
+.drug-not-found-title {
+  @apply text-3xl font-bold text-gray-900 mb-4;
+}
+
+.drug-not-found-description {
+  @apply text-gray-600 leading-relaxed mb-8;
+}
+
+.drug-not-found-actions {
+  @apply space-y-3 mb-8;
+}
+
+.drug-not-found-button {
+  @apply w-full flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-all duration-200 text-sm;
+}
+
+.drug-not-found-button-primary {
+  @apply bg-blue-600 text-white hover:bg-blue-700 hover:shadow-md;
+}
+
+.drug-not-found-button-secondary {
+  @apply border border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400;
+}
+
+.drug-not-found-button-icon {
+  @apply h-4 w-4 mr-2;
+}
+
+.drug-not-found-tip {
+  @apply bg-yellow-50 border border-yellow-200 rounded-lg p-4;
+}
+
+.drug-not-found-tip-text {
+  @apply text-sm text-yellow-800 leading-relaxed;
+}
