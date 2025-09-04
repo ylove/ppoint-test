@@ -186,7 +186,7 @@ export class DrugService implements OnModuleInit, OnModuleDestroy {
       const enhancedSummary = await this.openAIService.generateDrugSummary(drug);
       
       const sections = this.buildDrugSections(drug);
-      // const enhancedSections = await this.enhanceSections(sections, drug);
+
       const enhancedSections = await this.enhanceAllSectionsAtOnce(sections, drug);
 
       const enhancedContent: EnhancedDrugContent = {
@@ -255,27 +255,7 @@ export class DrugService implements OnModuleInit, OnModuleDestroy {
     });
 
     return sections;
-  }
-
-  private async enhanceSections(sections: DrugSection[], drug: DrugLabel): Promise<DrugSection[]> {
-    const enhancedSections = [...sections];
-    
-    // Enhance key sections with AI (limit to avoid rate limits)
-    const keySection = sections.find(s => s.title === 'Indications and Usage');
-    if (keySection) {
-      try {
-        const enhanced = await this.openAIService.enhanceSection(keySection.content, drug);
-        const sectionIndex = enhancedSections.findIndex(s => s.id === keySection.id);
-        if (sectionIndex !== -1) {
-          enhancedSections[sectionIndex].enhancedContent = enhanced;
-        }
-      } catch (error) {
-        this.logger.warn(`Failed to enhance section for ${drug.drugName}:`, error);
-      }
-    }
-
-    return enhancedSections;
-  }
+  }  
 
   private async enhanceAllSectionsAtOnce(sections: DrugSection[], drug: DrugLabel): Promise<DrugSection[]> {
     const cacheKey = `enhanced_all_sections:${drug.setId}`;
