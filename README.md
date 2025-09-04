@@ -6,7 +6,7 @@ A full-stack application for drug information lookup and management, built with 
 
 - **Frontend**: NextJS (React-based framework)
 - **Backend**: NestJS (Node.js framework)
-- **Database**: Docker-based setup
+- **Database**: PostgreSQL 17.6, hosted at Exoscale Cloud
 - **Containerization**: Docker & Docker Compose
 
 ## Quick Start
@@ -42,3 +42,7 @@ The application uses Docker Compose with environment files that are configured f
 - `rxfrontend/` - NextJS frontend application
 - `rxview/` - NestJS backend API
 - `docker-compose.yml` - Container orchestration configuration
+
+## Data Governance
+
+This application's data is hosted on European servers, in Switzerland. This may not be suitable for all US applications. This is meant as a demonstration.
