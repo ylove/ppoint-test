@@ -37,77 +37,45 @@ async function parseDrugSlug(drugSlug: string): Promise<{ drugName: string; gene
   return null;
 }
 
-export async function generateMetadata({ params }: DrugPageProps): Promise<Metadata> {
-  const { drugSlug } = await params;
-  const parsed = await parseDrugSlug(drugSlug);
-  
-  if (!parsed) {
-    return {
-      title: 'Drug Not Found',
-      description: 'The requested drug information could not be found.',
-    };
-  }
-
-  try {
-    const apiClient = ApiClient.getInstance();
-    // Use basic drug info for immediate metadata - don't wait for AI enhancements
-    const basicDrug = await apiClient.getDrugBasic(parsed.drugName, parsed.genericName);
-
-    if (!basicDrug) {
-      return {
-        title: 'Drug Not Found',
-        description: 'The requested drug information could not be found.',
-      };
-    }
-
-    const fallbackTitle = `${basicDrug.drugName} (${basicDrug.genericName}) - Prescription Info`;
-    const fallbackDescription = `Complete prescribing information for ${basicDrug.drugName} (${basicDrug.genericName}). Dosage, side effects, warnings & more.`;
-
-    const structuredData = {
-      '@context': 'https://schema.org',
-      '@type': 'Drug',
-      name: basicDrug.drugName,
-      activeIngredient: basicDrug.genericName,
-      description: fallbackDescription.substring(0, 200),
-      manufacturer: {
-        '@type': 'Organization',
-        name: 'Various',
-      },
-    };
-
-    return {
-      title: fallbackTitle,
-      description: fallbackDescription,
-      keywords: [
-        basicDrug.drugName,
-        basicDrug.genericName,
-        'prescription drug',
-        'medication information',
-        'drug label',
-        'FDA approved'
-      ],
-      openGraph: {
-        title: fallbackTitle,
-        description: fallbackDescription,
-        type: 'article',
-        publishedTime: basicDrug.lastUpdated,
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title: fallbackTitle,
-        description: fallbackDescription,
-      },
-      other: {
-        'application/ld+json': JSON.stringify(structuredData),
-      },
-    };
-  } catch (error) {
-    return {
-      title: 'Drug Information',
-      description: 'Prescription drug information and details.',
-    };
-  }
-}
+export const metadata: Metadata = {
+  title: 'Drug Information - RxView',
+  description: 'Complete prescribing information for prescription medications. FDA-approved drug information including dosage, side effects, warnings, and interactions.',
+  keywords: 'prescription drugs, medication information, FDA approved, prescribing information, dosage, side effects, drug interactions',
+  openGraph: {
+    title: 'Drug Information - RxView',
+    description: 'Complete prescribing information for prescription medications. FDA-approved drug information including dosage, side effects, warnings, and interactions.',
+    type: 'article',
+    siteName: 'RxView - AI-Enhanced Drug Information',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Drug Information - RxView',
+    description: 'Complete prescribing information for prescription medications.',
+    site: '@RxViewApp',
+  },
+  other: {
+    'application/ld+json': JSON.stringify([
+      {
+        '@context': 'https://schema.org',
+        '@type': 'MedicalWebPage',
+        name: 'Drug Information - RxView',
+        description: 'Complete prescribing information for prescription medications. FDA-approved drug information including dosage, side effects, warnings, and interactions.',
+        inLanguage: 'en-US',
+        isAccessibleForFree: true,
+        audience: {
+          '@type': 'MedicalAudience',
+          audienceType: ['Healthcare Professional', 'Patient'],
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'RxView',
+          description: 'AI-Enhanced Drug Information Platform',
+        },
+      }
+    ]),
+  },
+};
 
 export default async function DrugPage({ params }: DrugPageProps) {
   const { drugSlug } = await params;

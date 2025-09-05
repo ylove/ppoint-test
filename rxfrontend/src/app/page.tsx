@@ -3,13 +3,98 @@ import { Search, Shield, Zap, Users, ArrowRight, Pill } from 'lucide-react';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'RxView - AI-Enhanced Drug Information Platform',
-  description: 'Access comprehensive prescription drug information with AI-powered insights. Search FDA-approved medications, view detailed prescribing information, and get simplified explanations.',
+  title: 'RxView - FDA Drug Information for Healthcare Professionals',
+  description: 'Comprehensive FDA prescription drug database for physicians and healthcare professionals. Search thousands of medications, access detailed prescribing information, dosage guidelines, contraindications, and drug interactions with AI-powered clinical insights.',
+  keywords: 'prescription drugs, FDA drug information, physician resources, medication database, prescribing information, drug interactions, clinical pharmacology, healthcare professionals, medical reference, pharmaceutical database',
+  authors: [{ name: 'RxView Medical Team' }],
+  creator: 'RxView',
+  publisher: 'RxView',
+  alternates: {
+    canonical: 'https://rxview.com',
+  },
+  robots: 'index, follow, max-snippet:-1, max-image-preview:large',
   openGraph: {
-    title: 'RxView - AI-Enhanced Drug Information Platform',
-    description: 'Access comprehensive prescription drug information with AI-powered insights.',
+    title: 'RxView - FDA Drug Information for Healthcare Professionals',
+    description: 'Comprehensive FDA prescription drug database for physicians and healthcare professionals. Search medications, access prescribing information, and get AI-powered clinical insights.',
+    type: 'website',
+    url: 'https://rxview.com',
+    siteName: 'RxView',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'RxView - FDA Drug Information for Healthcare Professionals',
+    description: 'Comprehensive FDA prescription drug database for physicians and healthcare professionals.',
+    site: '@RxViewApp',
+    creator: '@RxViewApp',
+  },
+  category: 'health',
+  classification: 'medical-reference',
+  other: {
+    'application/ld+json': JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'MedicalWebPage',
+      name: 'RxView - FDA Drug Information for Healthcare Professionals',
+      description: 'Comprehensive FDA prescription drug database for physicians and healthcare professionals. Search medications, access prescribing information, and get AI-powered clinical insights.',
+      url: 'https://rxview.com',
+      inLanguage: 'en-US',
+      isAccessibleForFree: true,
+      medicalAudience: ['Healthcare Professional', 'Physician', 'Pharmacist', 'Nurse'],
+      specialty: ['Pharmacology', 'Clinical Medicine', 'Internal Medicine'],
+      mainEntity: {
+        '@type': 'Dataset',
+        name: 'FDA Prescription Drug Database',
+        description: 'Comprehensive database of FDA-approved prescription medications with detailed prescribing information.',
+        keywords: 'prescription drugs, FDA, medication, prescribing information, drug interactions',
+        creator: {
+          '@type': 'Organization',
+          name: 'FDA',
+          description: 'U.S. Food and Drug Administration',
+        },
+        provider: {
+          '@type': 'Organization',
+          name: 'RxView',
+          description: 'AI-Enhanced Drug Information Platform for Healthcare Professionals',
+        },
+      },
+      breadcrumb: {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://rxview.com',
+          },
+        ],
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'RxView',
+        description: 'AI-Enhanced Drug Information Platform for Healthcare Professionals',
+        url: 'https://rxview.com',
+      },
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: 'https://rxview.com/drugs?query={search_term}',
+        'query-input': 'required name=search_term',
+      },
+      audience: {
+        '@type': 'MedicalAudience',
+        audienceType: ['Healthcare Professional', 'Physician', 'Pharmacist', 'Nurse', 'Medical Student'],
+        geographicArea: {
+          '@type': 'Country',
+          name: 'United States',
+        },
+      },
+    }),
+    'medical-specialty': 'Pharmacology, Clinical Medicine',
+    'content-type': 'medical-database',
+    'target-audience': 'healthcare-professionals',
+    'data-source': 'FDA',
   },
 };
+
 
 export default function HomePage() {
   return (
