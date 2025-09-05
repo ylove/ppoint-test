@@ -43,7 +43,7 @@ export class OpenAIService {
 
     return await this.callOpenAIWithRetry(async () => {
       const completion = await this.openai.chat.completions.create({
-        model: 'gpt-3.5-turbo',
+        model: 'gpt-4.1-nano',
         messages: [{ role: 'user', content: prompt }],
         temperature: 0.7,
         max_tokens: 200,
@@ -82,7 +82,7 @@ export class OpenAIService {
 
     return await this.callOpenAIWithRetry(async () => {
       const completion = await this.openai.chat.completions.create({
-        model: 'gpt-3.5-turbo',
+        model: 'gpt-4.1-nano',
         messages: [{ role: 'user', content: prompt }],
         temperature: 0.6,
         max_tokens: 150,
@@ -142,7 +142,7 @@ export class OpenAIService {
 
     return await this.callOpenAIWithRetry(async () => {
       const response = await this.openai.responses.create({
-        model: "gpt-4o-2024-08-06",
+        model: "gpt-4.1-nano",
         temperature: 0.4,
         input: [
           { role: "system", content: systemPrompt },
@@ -238,7 +238,7 @@ export class OpenAIService {
 
     return await this.callOpenAIWithRetry(async () => {
       const completion = await this.openai.chat.completions.create({
-        model: 'gpt-3.5-turbo',
+        model: 'gpt-4.1-nano',
         messages: [{ role: 'user', content: prompt }],
         temperature: 0.5,
         max_tokens: 500,

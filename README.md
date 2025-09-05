@@ -65,4 +65,4 @@ All AI-generated content is cached, only the first user's page load would have a
 
 ## Known limitations
 
-The database used is the smallest, least powerful configuration - suitable for such a small number of rows - but it is subject to latency, as are OpenAI API calls. Some of this latency is out of this app's control. Were financial constraints not relevant, I would have hosted this in the cloud with powerful infrastructure, as well as used faster models for enhancing drug profiles, or used a more robust hosted caching mechanism to allow for looping through and pre-"enhancing" all the records simultaneously.
+The database used is the smallest, least powerful configuration - suitable for such a small number of rows - but it is subject to latency, as are OpenAI API calls. Some of this latency is out of this app's control. Were financial constraints not relevant, I would have hosted this in the cloud with powerful caching infrastructure, as well as used faster models for enhancing drug profiles.
