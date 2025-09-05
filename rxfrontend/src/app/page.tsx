@@ -32,9 +32,9 @@ export default function HomePage() {
             </h1>
             
             <p className="hero-description">
-              Access comprehensive prescription drug information with AI-powered insights. 
+              Access comprehensive prescription drug information with AI-powered insights designed for healthcare professionals. 
               Search FDA-approved medications, view detailed prescribing information, and get 
-              simplified explanations designed for healthcare professionals and patients.
+              simplified explanations for patients to enhance understanding and support more effective patient care decisions.
             </p>
 
             {/* Quick Search */}
